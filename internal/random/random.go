@@ -2,9 +2,10 @@ package random
 
 import (
 	"crypto/rand"
-	"magma-cipher/internal/key"
-	"magma-cipher/internal/utils"
 	"math"
+
+	"github.com/vctriusss/magma-cipher/internal/key"
+	"github.com/vctriusss/magma-cipher/internal/utils"
 )
 
 const MaxUint32 = int64(math.MaxUint32)

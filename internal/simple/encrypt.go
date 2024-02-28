@@ -1,10 +1,10 @@
 package simple
 
 import (
-	"magma-cipher/internal/block"
-	"magma-cipher/internal/key"
-	"magma-cipher/internal/transform"
-	"magma-cipher/internal/utils"
+	"github.com/vctriusss/magma-cipher/internal/block"
+	"github.com/vctriusss/magma-cipher/internal/key"
+	"github.com/vctriusss/magma-cipher/internal/transform"
+	"github.com/vctriusss/magma-cipher/internal/utils"
 )
 
 const (
@@ -15,15 +15,15 @@ const (
 
 func encryptBlock(blck []byte, k key.Key) []byte {
 	b := block.New(blck)
-	
+
 	for i := 0; i < ENC_ORDER_CHANGE_ROUND; i++ {
 		b = transform.G(b, k[i%key.PARTS])
 	}
-	
+
 	for i := ENC_ORDER_CHANGE_ROUND; i < ROUNDS; i++ {
 		b = transform.G(b, k[key.PARTS-1-i%key.PARTS])
 	}
-	
+
 	b[0], b[1] = b[1], b[0]
 
 	return b.ToBytes()

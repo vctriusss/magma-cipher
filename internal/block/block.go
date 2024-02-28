@@ -1,13 +1,13 @@
 package block
 
-import  (
-	"magma-cipher/internal/utils"
+import (
+	"github.com/vctriusss/magma-cipher/internal/utils"
 )
 
 const (
-	SIZE = 64
+	SIZE       = 64
 	SIZE_BYTES = SIZE / 8
-	PARTS = SIZE / 32
+	PARTS      = SIZE / 32
 )
 
 type Block [PARTS]uint32

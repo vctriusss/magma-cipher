@@ -1,8 +1,8 @@
 package transform
 
 import (
-	"magma-cipher/internal/block"
-	"magma-cipher/internal/utils"
+	"github.com/vctriusss/magma-cipher/internal/block"
+	"github.com/vctriusss/magma-cipher/internal/utils"
 )
 
 var PI = [8][16]byte{
@@ -22,8 +22,8 @@ func T(bi uint32) uint32 {
 	for i := 0; i < 4; i++ {
 		var p1 byte = PI[i*2][bytes[i]&0x0f]
 		var p2 byte = PI[i*2+1][(bytes[i]&0xf0)>>4]
-		
-		bytes[i] = (p2<<4) | p1
+
+		bytes[i] = (p2 << 4) | p1
 	}
 	return utils.BytesToUint32(bytes)
 }

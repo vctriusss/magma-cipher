@@ -4,9 +4,9 @@ import (
 	"log"
 	"os"
 
-	"magma-cipher/internal/files"
-	"magma-cipher/internal/key"
-	"magma-cipher/internal/simple"
+	"github.com/vctriusss/magma-cipher/internal/files"
+	"github.com/vctriusss/magma-cipher/internal/key"
+	"github.com/vctriusss/magma-cipher/internal/simple"
 
 	"github.com/urfave/cli/v2"
 )
@@ -25,8 +25,8 @@ func main() {
 		Usage: "CLI tool for encrypting and decrypting files with GOST 28147-89 cipher (a.k.a. Magma)",
 		Commands: []*cli.Command{
 			{
-				Name:   "encrypt",
-				Usage:  "Encrypt a file",
+				Name:  "encrypt",
+				Usage: "Encrypt a file",
 				Flags: flags,
 				Action: func(ctx *cli.Context) error {
 					inputBytes, err := files.ReadInput(ctx.String("input"))
@@ -52,8 +52,8 @@ func main() {
 				},
 			},
 			{
-				Name:   "decrypt",
-				Usage:  "Decrypt a file",
+				Name:  "decrypt",
+				Usage: "Decrypt a file",
 				Flags: flags,
 				Action: func(ctx *cli.Context) error {
 					inputBytes, err := files.ReadInput(ctx.String("input"))
@@ -79,7 +79,6 @@ func main() {
 				},
 			},
 		},
-
 	}
 
 	if err := app.Run(os.Args); err != nil {

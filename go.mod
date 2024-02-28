@@ -1,4 +1,4 @@
-module magma-cipher
+module github.com/vctriusss/magma-cipher
 
 go 1.21.0
 

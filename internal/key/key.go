@@ -1,15 +1,16 @@
 package key
 
-import  (
-	"magma-cipher/internal/utils"
+import (
 	"encoding/hex"
 	"errors"
+
+	"github.com/vctriusss/magma-cipher/internal/utils"
 )
 
 const (
-	SIZE = 256
+	SIZE       = 256
 	SIZE_BYTES = SIZE / 8
-	PARTS = SIZE / 32
+	PARTS      = SIZE / 32
 )
 
 type Key [PARTS]uint32
