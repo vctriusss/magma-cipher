@@ -29,13 +29,13 @@ func T(bi uint32) uint32 {
 }
 
 func G(b block.Block, ki uint32) block.Block {
-	tmp := b[1]
+	tmp := b[0]
 
-	b[1] += ki
-	b[1] = T(b[1])
-	b[1] = rol(b[1], 11)
-	b[1] = b[0] ^ b[1]
-	b[0] = tmp
+	b[0] += ki
+	b[0] = T(b[0])
+	b[0] = rol(b[0], 11)
+	b[0] = b[0] ^ b[1]
+	b[1] = tmp
 	return b
 }
 
@@ -55,5 +55,5 @@ func sumMod32(n1, n2 uint32) uint32 {
 }
 
 func rol(n uint32, nPos int) uint32 {
-	return ((n << 11) & (1<<32 - 1)) | ((n >> (32 - 11)) & (1<<32 - 1))
+	return ((n << nPos) & (1<<32 - 1)) | ((n >> (32 - nPos)) & (1<<32 - 1))
 }
