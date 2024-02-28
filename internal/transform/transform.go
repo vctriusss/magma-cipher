@@ -39,21 +39,6 @@ func G(b block.Block, ki uint32) block.Block {
 	return b
 }
 
-func sumMod32(n1, n2 uint32) uint32 {
-	res := make([]byte, 4)
-
-	b1 := utils.Uint32ToBytes(n1)
-	b2 := utils.Uint32ToBytes(n2)
-
-	var tmp uint32
-	for i := 3; i >= 0; i-- {
-		tmp = tmp>>8 + uint32(b1[i]+b2[i])
-		res[i] = byte(tmp & 0xff)
-	}
-
-	return utils.BytesToUint32(res)
-}
-
 func rol(n uint32, nPos int) uint32 {
 	return ((n << nPos) & (1<<32 - 1)) | ((n >> (32 - nPos)) & (1<<32 - 1))
 }

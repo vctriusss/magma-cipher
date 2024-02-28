@@ -25,14 +25,14 @@ func decryptBlock(blck []byte, k key.Key) []byte {
 
 	}
 
-	b[0], b[1] = b[1], b[0]
+	// b[0], b[1] = b[1], b[0]
 	fmt.Println(b)
 
 	return b.ToBytes()
 }
 
 func Decrypt(bytes []byte, key key.Key) []byte {
-	byteBlocks := utils.ChunkSlice[byte](bytes, len(bytes)/block.SIZE_BYTES)
+	byteBlocks := utils.ChunkSlice(bytes, len(bytes)/block.SIZE_BYTES)
 	res := make([]byte, 0)
 	fmt.Println(bytes)
 	for _, b := range byteBlocks {
