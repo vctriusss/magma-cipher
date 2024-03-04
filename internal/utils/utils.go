@@ -2,6 +2,7 @@ package utils
 
 import (
 	"encoding/binary"
+	"encoding/hex"
 )
 
 func ChunkSlice[T any](arr []T, nChunks int) [][]T {
@@ -30,4 +31,11 @@ func Uint32ToBytes(n uint32) []byte {
 	binary.LittleEndian.PutUint32(bytes, n)
 
 	return bytes
+}
+
+func BytesToHex(bytes []byte) []byte {
+	res := make([]byte, 2*len(bytes))
+	hex.Encode(res, bytes)
+
+	return res
 }

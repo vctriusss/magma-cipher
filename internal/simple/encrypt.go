@@ -26,7 +26,7 @@ func encryptBlock(blck []byte, k key.Key) []byte {
 
 	b[0], b[1] = b[1], b[0]
 
-	return b.ToBytes()
+	return b.Bytes()
 }
 
 func Encrypt(bytes []byte, key key.Key) []byte {

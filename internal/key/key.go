@@ -1,6 +1,7 @@
 package key
 
 import (
+	"crypto/rand"
 	"encoding/hex"
 	"errors"
 
@@ -29,4 +30,25 @@ func New(bytes []byte) (Key, error) {
 	}
 
 	return key, nil
+}
+
+func Generate() (Key, error) {
+	keyBytes := make([]byte, SIZE_BYTES)
+
+	_, err := rand.Read(keyBytes)
+	if err != nil {
+		return Key{}, err
+	}
+
+	return New(utils.BytesToHex(keyBytes))
+}
+
+func (k Key) Bytes() []byte {
+	res := make([]byte, 0)
+
+	for _, b := range k {
+		res = append(res, utils.Uint32ToBytes(b)...)
+	}
+
+	return res
 }

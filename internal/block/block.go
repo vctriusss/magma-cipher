@@ -21,6 +21,6 @@ func New(bytes []byte) Block {
 	return block
 }
 
-func (b Block) ToBytes() []byte {
+func (b Block) Bytes() []byte {
 	return append(utils.Uint32ToBytes(b[0]), utils.Uint32ToBytes(b[1])...)
 }
