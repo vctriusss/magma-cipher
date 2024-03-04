@@ -14,7 +14,7 @@ type Block [PARTS]uint32
 
 func New(bytes []byte) Block {
 	block := Block{}
-	for i, ch := range utils.ChunkSlice[byte](bytes, PARTS) {
+	for i, ch := range utils.ChunkSlice(bytes, PARTS) {
 		block[i] = utils.BytesToUint32(ch)
 	}
 
@@ -22,5 +22,5 @@ func New(bytes []byte) Block {
 }
 
 func (b Block) ToBytes() []byte {
-	return append(utils.Uint32ToBytes(b[1]), utils.Uint32ToBytes(b[0])...)
+	return append(utils.Uint32ToBytes(b[0]), utils.Uint32ToBytes(b[1])...)
 }

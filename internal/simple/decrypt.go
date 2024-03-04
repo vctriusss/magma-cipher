@@ -25,7 +25,7 @@ func decryptBlock(blck []byte, k key.Key) []byte {
 
 	}
 
-	// b[0], b[1] = b[1], b[0]
+	b[0], b[1] = b[1], b[0]
 	fmt.Println(b)
 
 	return b.ToBytes()

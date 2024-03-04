@@ -10,7 +10,7 @@ import (
 const (
 	ROUNDS                 = 32
 	ENC_ORDER_CHANGE_ROUND = 24
-	DEC_ORDER_CHANGE_ROUND = 8
+	DEC_ORDER_CHANGE_ROUND = ROUNDS - ENC_ORDER_CHANGE_ROUND
 )
 
 func encryptBlock(blck []byte, k key.Key) []byte {
@@ -32,8 +32,8 @@ func encryptBlock(blck []byte, k key.Key) []byte {
 func Encrypt(bytes []byte, key key.Key) []byte {
 	var targetLen = ((len(bytes)-1)/block.SIZE_BYTES + 1) * block.SIZE_BYTES
 
-	bytes = utils.Pad[byte](bytes, targetLen)
-	byteBlocks := utils.ChunkSlice[byte](bytes, targetLen/block.SIZE_BYTES)
+	bytes = utils.Pad(bytes, targetLen)
+	byteBlocks := utils.ChunkSlice(bytes, targetLen/block.SIZE_BYTES)
 	res := make([]byte, 0)
 
 	for _, b := range byteBlocks {

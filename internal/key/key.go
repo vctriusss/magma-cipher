@@ -24,7 +24,7 @@ func New(bytes []byte) (Key, error) {
 		return key, errors.New("Key must be a hex string with length of 256 bits (or 64 hex-symbols)")
 	}
 
-	for i, ch := range utils.ChunkSlice[byte](keyBytes, PARTS) {
+	for i, ch := range utils.ChunkSlice(keyBytes, PARTS) {
 		key[i] = utils.BytesToUint32(ch)
 	}
 
