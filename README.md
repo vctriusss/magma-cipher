@@ -2,6 +2,20 @@
 
 Программа для шифрования и расшифрования файлов по стандарту ГОСТ 28147-89 (шифр Магма) 
 
+## Install
+
+```bash
+go install github.com/vctriusss/magma-cipher/cmd/magma@latest
+```
+
+or
+
+```bash
+git clone github.com/vctriusss/magma-cipher.git
+cd magma-cipher
+go build cmd/magma/magma.go
+```
+
 ## Usage
 
 ### Шифрование
